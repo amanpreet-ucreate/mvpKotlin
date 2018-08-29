@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MVPKotlin</string>
+
+    <string-array name="arrNames">
+        <item>John Pieter</item>
+        <item>John Cena</item>
+        <item>Tony Stark</item>
+        <item>Johnson</item>
+        <item>Jay Cutler</item>
+    </string-array>
+</resources>
