@@ -28,7 +28,6 @@ object Eventbus {
      * */
     private val stickyEventsSubject = BehaviorSubject.create<Any>()
 
-
     /**
      * @replyEventsSubject It emits all the items of the source Observable, regardless of when the subscriber subscribes.
      * */
@@ -51,9 +50,6 @@ object Eventbus {
     fun publishAsynce(event: Any) {
         asyncEventsSubject.onNext(event)
     }
-
-
-
 
     // Listen should return an Observable and not the publisher
     // Using ofType we filter only events that match that class type

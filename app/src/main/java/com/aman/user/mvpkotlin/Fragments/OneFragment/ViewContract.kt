@@ -6,14 +6,11 @@ import com.aman.user.mvpkotlin.Utilities.mvp.BaseObject
 object ViewContract {
 
     interface View : BaseObject.BaseView {
-
         fun showData(arrrData : List<Pojos.SearchItem>)
     }
 
     interface Presenter : BaseObject.BasePresenter<View> {
-
         fun executeAPI() : List<Pojos.SearchItem>
-
     }
 
 

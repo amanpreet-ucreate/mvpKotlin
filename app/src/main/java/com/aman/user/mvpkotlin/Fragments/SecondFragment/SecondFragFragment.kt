@@ -31,11 +31,11 @@ class SecondFragFragment : BaseMvpFragment<ViewContractSecondFrag.View, ViewCont
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Eventbus.listen(String::class.java).subscribe({
+        Eventbus.listenSticky(String::class.java).subscribe({
             if(activity!=null) {
                 Toast.makeText(activity, "Recieved in SecondFrag: " + it, Toast.LENGTH_SHORT).show()
             }else{
-                println("ACTIVTTY IS NULL")
+                println("ACTIVTTY NOT PRESENT")
             }
 
         })

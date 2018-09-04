@@ -48,9 +48,6 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
         recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
         mPresenter.executeAPI()
 
-
-
-
         //Some properties that can be used with String
         println("drop ${string.dropLast(2)}...")
         println("plus ${string.plus(2)}")
@@ -66,6 +63,7 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
 
 
     override fun showData(arrrData: List<Pojos.SearchItem>) { //To change body of created functions use File | Settings | File Templates.
+
         recyclerview.adapter = RcyAdapter(resources.getStringArray(R.array.arrNames))
     }
 
@@ -99,7 +97,8 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
                 tvNamee = itemView.findViewById(R.id.tvName) as TextView
 
                 itemView.setOnClickListener {
-                    Eventbus.publish(tvNamee.text)
+                    //Which ever class/fragment is listening to this sticky will received this Name
+                    Eventbus.publishSticky(tvNamee.text)
                 }
             }
         }

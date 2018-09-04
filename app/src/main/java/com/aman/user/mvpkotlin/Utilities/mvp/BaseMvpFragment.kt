@@ -18,20 +18,13 @@ abstract class BaseMvpFragment<in V : BaseObject.BaseView, T : BaseObject.BasePr
         mPresenter.attachView(this as V)
     }
 
+
     override fun getContext(): Context = activity as AppCompatActivity
 
     protected abstract var mPresenter: T
 
      fun showError(error: String?) {
         Toast.makeText(activity, error, Toast.LENGTH_LONG).show()
-    }
-
-     fun showError(stringResId: Int) {
-        Toast.makeText(activity, stringResId, Toast.LENGTH_LONG).show()
-    }
-
-     fun showMessage(srtResId: Int) {
-        Toast.makeText(activity, srtResId, Toast.LENGTH_LONG).show()
     }
 
      fun showMessage(message: String) {
@@ -42,4 +35,5 @@ abstract class BaseMvpFragment<in V : BaseObject.BaseView, T : BaseObject.BasePr
         super.onDestroy()
         mPresenter.detachView()
     }
+
 }

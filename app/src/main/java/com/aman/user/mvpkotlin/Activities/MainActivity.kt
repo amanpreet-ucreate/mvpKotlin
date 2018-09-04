@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
          })
 
 
-        Eventbus.listen(String::class.java).subscribe({
+        Eventbus.listenSticky(String::class.java).subscribe({
 
             Toast.makeText(applicationContext,"Recieved: "+it,Toast.LENGTH_SHORT).show()
 
