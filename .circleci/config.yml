@@ -23,27 +23,48 @@ jobs:
 
     steps:
         - checkout
-        - run:
-              name: chmod permissions
-              command: chmod +x ./gradlew
+        - restore_cache:
+              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}
 #        - run:
-#              name: Download Dependencies
-#              command: ./gradlew androidDependencies
+#              name: chmod permissions
+#              command: chmod +x ./gradlew
+        - run:
+              name: Download Dependencies
+              command: ./gradlew androidDependencies
         - save_cache:
               paths:
                     - ~/.gradle
               key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
         - run:
-              name: Run Tests
-              command: ./gradlew lint test
-        - run:
               name: Creating Dummy Artifacts
               command:
-                      mkdir /tmp/artifacts;
-#                        echo "my artifact file" > /tmp/artifact-1;
-
-#                        echo "my artifact files in a dir" > /tmp/artifacts/artifact-2;
-        - run: make test
+                     mkdir /tmp/artifacts
+                     mkdir /tmp/artifacts/tests
+                     mkdir /tmp/artifacts/moduletest
+        - run:
+              name: Run Presentation Module Unit Tests
+              command: ./gradlew :presentation:testDebugUnitTest
+        - store_artifacts:
+              path: /tmp/artifacts
+        - store_test_results:
+              path: /tmp/artifacts
+        - run:
+              name: Run Domain Module Unit Tests
+              command: ./gradlew :domain:test
+        - store_artifacts:
+              path: /tmp/artifacts/tests
+        - store_test_results:
+              path: /tmp/artifacts/tests
+        - run:
+              name: Run Data Module Unit Tests
+              command: ./gradlew :data:testDebugUnitTest
+        - store_artifacts:
+              path: tmp/artifacts/moduletest
+        - store_test_results:
+              path: tmp/artifacts/moduletest
+        - run:
+              name: Run Tests
+              command: ./gradlew lint
         - store_test_results:
                               path: /tmp/artifacts
 
