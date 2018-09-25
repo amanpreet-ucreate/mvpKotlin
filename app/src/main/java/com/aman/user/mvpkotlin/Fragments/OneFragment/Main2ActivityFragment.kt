@@ -44,17 +44,13 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
         mPresenter.executeAPI()
-
         //Some properties that can be used with String
         println("drop ${string.dropLast(2)}...")
         println("plus ${string.plus(2)}")
         println("isDigit ${string.filter { it.isLetter() }}")
         println("reversed ${string.reversed()}")
-
-
     }
 
     fun String.toUpperCasefirstLetter() : String{
@@ -63,13 +59,11 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
 
 
     override fun showData(arrrData: List<Pojos.SearchItem>) { //To change body of created functions use File | Settings | File Templates.
-
         recyclerview.adapter = RcyAdapter(resources.getStringArray(R.array.arrNames))
     }
 
     fun onItemClick(view: View) {
         Toast.makeText(activity, "CLICKED", Toast.LENGTH_SHORT).show()
-
     }
 
     class RcyAdapter(var arrData: Array<String>) : RecyclerView.Adapter<RcyAdapter.ViewHolder>() {
