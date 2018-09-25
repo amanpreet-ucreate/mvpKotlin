@@ -51,16 +51,16 @@ jobs:
               name: Run Domain Module Unit Tests
               command: ./gradlew :app:test
         - store_artifacts:
-              path: /tmp/artifacts/tests
+              path: /tmp/artifacts
         - store_test_results:
-              path: /tmp/artifacts/tests
+              path: /tmp/artifacts
         - run:
               name: Run Data Module Unit Tests
               command: ./gradlew :app:testDebugUnitTest
         - store_artifacts:
-              path: tmp/artifacts/moduletest
+              path: tmp/artifacts
         - store_test_results:
-              path: tmp/artifacts/moduletest
+              path: tmp/artifacts
         - run:
               name: Run Tests
               command: ./gradlew lint
