@@ -39,7 +39,7 @@ jobs:
         - image: circleci/android:api-25-alpha
     steps:
         - checkout
-          - run:
+        - run:
                 name: Test
                 command: save
         - store_artifacts:
