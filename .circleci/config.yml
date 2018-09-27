@@ -1,91 +1,42 @@
-## Java Gradle CircleCI 2.0 configuration file
-##
-## Check https://circleci.com/docs/2.0/language-java/ for more details
-##
-#version: 2
-#jobs:
-#  build:
-#    docker:
-#      # specify the version you desire here
-#        - image: circleci/android:api-25-alpha
+# Java Gradle CircleCI 2.0 configuration file
 #
-#      # Specify service dependencies here if necessary
-#      # CircleCI maintains a library of pre-built images
-#      # documented at https://circleci.com/docs/2.0/circleci-images/
-#      # - image: circleci/postgres:9.4
-#
-#    working_directory: ~/mvpKotlin
-#
-#    environment:
-#      # Customize the JVM maximum heap limit
-#      JVM_OPTS: -Xmx3200m
-#      TERM: dumb
-#
-#    steps:
-#        - checkout
-#        - restore_cache:
-#              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#        - run:
-#              name: chmod permissions
-#              command: chmod +x ./gradlew
-#        - run:
-#              name: Download Dependencies
-#              command: ./gradlew androidDependencies
-#        - save_cache:
-#              paths:
-#                    - ~/.gradle
-#              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#        - run:
-#              name: Creating Dummy Artifacts
-#              command:
-#                     mkdir /tmp/artifacts
-#        - run:
-#              name: Run Presentation Module Unit Tests
-#              command: ./gradlew :app:testDebugUnitTest
-#        - store_artifacts:
-#              path: /tmp/artifacts
-#        - store_test_results:
-#              path: /tmp/artifacts
-#        - run:
-#              name: Run Domain Module Unit Tests
-#              command: ./gradlew :app:test
-#        - store_artifacts:
-#              path: /tmp/artifacts
-#        - store_test_results:
-#              path: /tmp/artifacts
-#        - run:
-#              name: Run Data Module Unit Tests
-#              command: ./gradlew :app:testDebugUnitTest
-#        - store_artifacts:
-#              path: tmp/artifacts
-#        - store_test_results:
-#              path: tmp/artifacts
-#        - run:
-#              name: Run Tests
-#              command: ./gradlew lint
-#        - store_test_results:
-#                             path: /tmp/artifacts
-#
-#
-# Build configuration for Circle CI
+# Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
 jobs:
-    general:
-        artifacts:
-            - C:/AmanMehal/Kotlin/MvpKotlinGit/mvpKotlin/app/build/outputs/apk/
+  build:
+    docker:
+      # specify the version you desire here
+        - image: circleci/android:api-25-alpha
 
-    machine:
-        environment:
-            ANDROID_HOME: C:/Android/AndroidSoftware/sdk
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
 
-    dependencies:
-        override:
-            - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-27.1.0,android-27,extra-google-m2repository,extra-android-support
-            - ANDROID_HOME=C:/Android/AndroidSoftware/sdk ./gradlew dependencies
+    working_directory: ~/mvpKotlin
 
-    test:
-        override:
-            - (./gradlew assemble):
-                timeout: 360
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+
+    steps:
+        - checkout
+        - restore_cache:
+              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+        - run:
+              name: chmod permissions
+              command: chmod +x ./gradlew
+        - run:
+              name: Download Dependencies
+              command: ./gradlew androidDependencies
+        - save_cache:
+              paths:
+                    - ~/.gradle
+              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+        - store_atrifacts:
+              path: C:/AmanMehal/Kotlin/MvpKotlinGit/mvpKotlin/app/build/outputs/apk
+              destination: apks/
+
 
