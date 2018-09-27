@@ -40,7 +40,8 @@ jobs:
     steps:
         - checkout
           - run:
-            command: Test
+                name: Test
+                command: save
         - store_artifacts:
                       path: test-results.xml
                       prefix: tests

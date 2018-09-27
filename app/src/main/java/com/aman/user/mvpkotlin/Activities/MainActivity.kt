@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
              utilMethods.ReplaceFragment(R.id.fragment, SecondFragFragment.newInstance())
          })
 
-gfhgfh
         Eventbus.listenSticky(String::class.java).subscribe({
 
             Toast.makeText(applicationContext,"Recieved: "+it,Toast.LENGTH_SHORT).show()
