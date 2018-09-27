@@ -69,22 +69,23 @@
 #
 # Build configuration for Circle CI
 #
+version: 2
+jobs:
+    general:
+        artifacts:
+            - C:/AmanMehal/Kotlin/MvpKotlinGit/mvpKotlin/app/build/outputs/apk/
 
-general:
-    artifacts:
-        - C:/AmanMehal/Kotlin/MvpKotlinGit/mvpKotlin/app/build/outputs/apk/
+    machine:
+        environment:
+            ANDROID_HOME: C:/Android/AndroidSoftware/sdk
 
-machine:
-    environment:
-        ANDROID_HOME: C:/Android/AndroidSoftware/sdk
+    dependencies:
+        override:
+            - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-27.1.0,android-27,extra-google-m2repository,extra-android-support
+            - ANDROID_HOME=C:/Android/AndroidSoftware/sdk ./gradlew dependencies
 
-dependencies:
-    override:
-        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-27.1.0,android-27,extra-google-m2repository,extra-android-support
-        - ANDROID_HOME=C:/Android/AndroidSoftware/sdk ./gradlew dependencies
-
-test:
-    override:
-        - (./gradlew assemble):
-            timeout: 360
+    test:
+        override:
+            - (./gradlew assemble):
+                timeout: 360
 
