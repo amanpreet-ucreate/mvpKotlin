@@ -35,8 +35,11 @@ jobs:
               paths:
                     - ~/.gradle
               key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+        - run:
+              name: Run Tests
+              command: ./gradlew lint test
         - store_artifacts:
-              path: C:/AmanMehal/Kotlin/MvpKotlinGit/mvpKotlin/app/build/outputs/apk
+              path: /app/build/outputs/apk
               destination: apks/
 
 
