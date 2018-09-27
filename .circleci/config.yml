@@ -31,9 +31,11 @@ jobs:
         - run:
               name: Run Tests
               command: ./gradlew lint test
+        - store_test_results:
+              path: app/build/test-results
         - store_artifacts:
-              path: /app/build/outputs/apk
-              destination: apks/
+              path: app/build/
+              destination: apk/
   test:
     docker:
         - image: circleci/android:api-25-alpha
@@ -42,6 +44,8 @@ jobs:
         - run:
                 name: Test
                 command: save
+        - store_test_results:
+                path: app/build/test-results
         - store_artifacts:
-                      path: test-results.xml
-                      prefix: tests
+                path: test-results.xml
+                prefix: tests
