@@ -35,7 +35,7 @@ jobs:
               destination: test-results/
         - run:
               name: Initial build
-              command: ./gradlew clean assembleRelease https://docs.gradle.org/4.4/userguide/gradle_daemon.html --stacktrace
+              command: ./gradlew clean assembleDebug --no-daemon --stacktrace
         - store_artifacts:
               path: app/build/outputs/apk/
               destination: apks/
