@@ -5,12 +5,13 @@ import com.aman.user.mvpkotlin.Models.Pojos
 import com.aman.user.mvpkotlin.Utilities.mvp.BasePresenterImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.junit.Test
 
 class FirstFragPresenterImpl : BasePresenterImpl<ViewContract.View>(), ViewContract.Presenter {
 
     var arrList : List<Pojos.SearchItem> = ArrayList()
 
-
+    @Test
     override fun executeAPI(): List<Pojos.SearchItem> {
 
         showProgressDialog()

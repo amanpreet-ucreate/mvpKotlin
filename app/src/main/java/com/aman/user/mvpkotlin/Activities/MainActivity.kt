@@ -10,6 +10,7 @@ import com.aman.user.mvpkotlin.Utilities.EventBus.Eventbus
 import com.aman.user.tablayoutkotlin.Utilres.UtilMethods
 import kotlinx.android.synthetic.main.activity_main2.*
 
+
 class MainActivity : AppCompatActivity() {
 
     var utilMethods : UtilMethods = UtilMethods(this@MainActivity)
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity() {
          fab.setOnClickListener({
              utilMethods.ReplaceFragment(R.id.fragment, SecondFragFragment.newInstance())
          })
-
         Eventbus.listenSticky(String::class.java).subscribe({
 
             Toast.makeText(applicationContext,"Recieved: "+it,Toast.LENGTH_SHORT).show()
