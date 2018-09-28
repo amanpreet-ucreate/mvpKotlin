@@ -46,9 +46,9 @@ jobs:
     steps:
         - checkout
         - *restore_cache
-         - run:
-               name: chmod permissions
-               command: chmod +x ./gradlew
+        - run:
+              name: chmod permissions
+              command: chmod +x ./gradlew
         - run:
           name: Download dependencies
           command: ./gradlew androidDependencies
