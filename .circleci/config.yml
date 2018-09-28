@@ -3,6 +3,36 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
+
+references:
+  ## Cache
+
+    cache_key: &cache_key
+      key: cache-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "mobile/build.gradle" }}
+    restore_cache: &restore_cache
+      restore_cache:
+        <<: *cache_key
+    save_cache: &save_cache
+      save_cache:
+        <<: *cache_key
+        paths:
+          - ~/.gradle
+          - ~/.m2
+
+
+    ## Keys
+
+    # Android Key Store
+
+    export_android_key: &export_android_key
+      run:
+        name: Export Android key store environment variable
+        command: echo 'export ANDROID_KEY_STORE="$(app/mvpkotlin.jks)"' >> $BASH_ENV
+    decode_android_key: &decode_android_key
+      run:
+        name: Decode Android key store
+        command: echo $ANDROID_KEY_STORE | base64 -di > mvpkotlin.jks
+
 jobs:
   build:
     docker:
@@ -15,21 +45,17 @@ jobs:
       TERM: dumb
     steps:
         - checkout
+        - *restore_cache
          - run:
-              name: export KEYSTORE app/mvpkotlin.jks
-              command: echo 'export KEYSTORE=$(123456)/mvpkotlin.jks' >> $BASH_ENV
-        - restore_cache:
-              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+               name: chmod permissions
+               command: chmod +x ./gradlew
         - run:
-              name: chmod permissions
-              command: chmod +x ./gradlew
-        - run:
-              name: Download Dependencies
-              command: ./gradlew androidDependencies
-        - save_cache:
-              paths:
-                    - ~/.gradle
-              key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+        - *save_cache
+        - *export_android_key
+        - *decode_android_key
+        - *save_cache
         - run:
               name: Run Test
               command: ./gradlew lint test
