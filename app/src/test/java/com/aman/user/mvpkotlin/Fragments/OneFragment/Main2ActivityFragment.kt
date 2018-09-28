@@ -14,7 +14,6 @@ import com.aman.user.mvpkotlin.R
 import com.aman.user.mvpkotlin.Utilities.EventBus.Eventbus
 import com.aman.user.mvpkotlin.Utilities.mvp.BaseMvpFragment
 import kotlinx.android.synthetic.main.fragment_main2.*
-import org.junit.Test
 
 
 /**
@@ -55,12 +54,11 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
         println("reversed ${string.reversed()}")
     }
 
-    
+
     fun String.toUpperCasefirstLetter() : String{
         return this.substring(0,1).toUpperCase().plus(this.substring(1))
     }
 
-    @Test
     override fun showData(arrrData: List<Pojos.SearchItem>) { //To change body of created functions use File | Settings | File Templates.
         recyclerview.adapter = RcyAdapter(resources.getStringArray(R.array.arrNames))
     }
