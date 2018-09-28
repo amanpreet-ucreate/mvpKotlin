@@ -16,7 +16,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("mvpkotlin.keystore")
+            storeFile file("mvpkotlin.jks")
             storePassword '123456'
             keyAlias 'mvpkotlin'
             keyPassword '123456'
