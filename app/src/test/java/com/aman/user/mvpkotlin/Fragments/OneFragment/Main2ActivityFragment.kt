@@ -55,7 +55,7 @@ class Main2ActivityFragment : BaseMvpFragment<ViewContract.View, ViewContract.Pr
         println("reversed ${string.reversed()}")
     }
 
-    @Test
+    
     fun String.toUpperCasefirstLetter() : String{
         return this.substring(0,1).toUpperCase().plus(this.substring(1))
     }

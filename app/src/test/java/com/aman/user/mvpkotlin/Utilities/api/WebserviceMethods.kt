@@ -2,6 +2,7 @@ package com.aman.user.mvpkotlin.Utilities.api
 
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
+import org.junit.Before
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit
  */
 interface WebserviceMethods {
 
+
     @GET("api.php")
     fun getData(@Query("action") action: String,
                 @Query("format") format: String,
@@ -24,8 +26,9 @@ interface WebserviceMethods {
      * Companion object to create the WebserviceMethods
      * @see https://medium.com/@agrawalsuneet/companion-object-in-kotlin-5251e03d6423
      */
-    companion object Factory {
 
+    companion object Factory {
+        @Before
         fun create(): WebserviceMethods {
             val client  = OkHttpClient()
             client.newBuilder().connectTimeout(30,TimeUnit.SECONDS)

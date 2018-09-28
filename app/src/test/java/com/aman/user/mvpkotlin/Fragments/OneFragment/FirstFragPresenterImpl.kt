@@ -14,6 +14,7 @@ class FirstFragPresenterImpl : BasePresenterImpl<ViewContract.View>(), ViewContr
     @Test
     override fun executeAPI(): List<Pojos.SearchItem> {
 
+
         showProgressDialog()
         webservice.getData("query", "json", "search", "Trump")
                 .observeOn(AndroidSchedulers.mainThread())
