@@ -16,8 +16,8 @@ jobs:
     steps:
         - checkout
          - run:
-                  name: export KEYSTORE app/mvpkotlin.jks
-                  command: echo 'export KEYSTORE=$(123456)/mvpkotlin.jks' >> $BASH_ENV
+              name: export KEYSTORE app/mvpkotlin.jks
+              command: echo 'export KEYSTORE=$(123456)/mvpkotlin.jks' >> $BASH_ENV
         - restore_cache:
               key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
         - run:
