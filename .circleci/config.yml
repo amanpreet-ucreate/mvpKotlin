@@ -50,8 +50,8 @@ jobs:
               name: chmod permissions
               command: chmod +x ./gradlew
         - run:
-          name: Download dependencies
-          command: ./gradlew androidDependencies
+              name: Download dependencies
+              command: ./gradlew androidDependencies
         - *save_cache
         - *export_android_key
         - *decode_android_key
