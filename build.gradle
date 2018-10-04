@@ -24,7 +24,7 @@ allprojects {
 
 ext {
     // sdk and tools
-    minSdkVersion = 16
+    minSdkVersion = 21
     targetSdkVersion = 27
     compileSdkVersion = 27
     buildToolsVersion = '27.1.0'
