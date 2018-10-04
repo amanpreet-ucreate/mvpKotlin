@@ -27,7 +27,7 @@ references:
     export_android_key: &export_android_key
       run:
         name: Export Android key store environment variable
-        command: echo 'export ANDROID_KEY_STORE=app/mvpkotlin.jks' >> $BASH_ENV
+        command: echo 'export ANDROID_KEY_STORE="123456"' >> $BASH_ENV
     decode_android_key: &decode_android_key
       run:
         name: Decode Android key store
@@ -54,19 +54,19 @@ jobs:
         - run:
               name: Download dependencies
               command: ./gradlew androidDependencies
-        - *save_cache
+#        - *save_cache
         - *export_android_key
         - *decode_android_key
-        - *save_cache
-        - run:
-              name: Run Test
-              command: ./gradlew lint test
-        - store_test_results:
-              path: app/build/test-results
-              destination: test-results/
-        - store_artifacts:
-              path: app/build/test-results
-              prefix: test-results/
+#        - *save_cache
+#        - run:
+#              name: Run Test
+#              command: ./gradlew lint test
+#        - store_test_results:
+#              path: app/build/test-results
+#              destination: test-results/
+#        - store_artifacts:
+#              path: app/build/test-results
+#              prefix: test-results/
         - run:
               name: Initial build
               command: ./gradlew clean assembleRelease --no-daemon --stacktrace
