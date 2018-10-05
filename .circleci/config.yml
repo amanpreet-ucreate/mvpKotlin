@@ -85,8 +85,8 @@ jobs:
 #        - *decode_android_key
 
 #        - run:
-#              name: Initial build
-#              command: ./gradlew clean assembleRelease --no-daemon --stacktrace
+#               name: Initial build
+#               command: ./gradlew clean assembleRelease --no-daemon --stacktrace
 #        - store_artifacts:
 #              path: app/build/outputs/apk/
 #              destination: apks/
