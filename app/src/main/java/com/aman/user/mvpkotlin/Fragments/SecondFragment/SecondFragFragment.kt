@@ -24,8 +24,6 @@ class SecondFragFragment : BaseMvpFragment<ViewContractSecondFrag.View, ViewCont
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_second_frag, container, false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

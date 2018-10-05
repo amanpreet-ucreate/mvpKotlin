@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="18sp"
+        android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="5dp"
         tools:ignore="MissingConstraints" />

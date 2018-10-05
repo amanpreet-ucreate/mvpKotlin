@@ -35,6 +35,19 @@ references:
 
 
 
+    # Fast Lane Execution
+
+    export_fastlane_prod: &export_fastlane_prod
+      run:
+         name: fastlane
+         command: bundle exec fastlane deploy
+
+    export_fastlane_alpha: &export_fastlane_alpha
+      run:
+          name: fastlane
+          command: bundle exec fastlane alpha
+
+
 jobs:
   build:
     docker:
