@@ -9,6 +9,7 @@ references:
 
     cache_key: &cache_key
       key: cache-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      key: 1-gems-{{ checksum "Gemfile.lock" }}
     restore_cache: &restore_cache
       restore_cache:
         <<: *cache_key
@@ -46,6 +47,17 @@ references:
       run:
           name: fastlane
           command: bundle exec fastlane alpha
+ #---------------------------------------------------------------------------------------------------
+          #        - *save_cache
+          #        - run:
+          #              name: Run Test
+          #              command: ./gradlew lint test
+          #        - store_test_results:
+          #              path: app/build/test-results
+          #              destination: test-results/
+          #        - store_artifacts:
+          #              path: app/build/test-results
+          #              prefix: test-results/
 
 
 jobs:
@@ -67,25 +79,17 @@ jobs:
         - run:
               name: Download dependencies
               command: ./gradlew androidDependencies
-#        - *save_cache
-        - *export_android_key
-        - *decode_android_key
-#        - *save_cache
+        - *save_cache
+        - *export_fastlane_alpha
+#        - *export_android_key
+#        - *decode_android_key
+
 #        - run:
-#              name: Run Test
-#              command: ./gradlew lint test
-#        - store_test_results:
-#              path: app/build/test-results
-#              destination: test-results/
+#              name: Initial build
+#              command: ./gradlew clean assembleRelease --no-daemon --stacktrace
 #        - store_artifacts:
-#              path: app/build/test-results
-#              prefix: test-results/
-        - run:
-              name: Initial build
-              command: ./gradlew clean assembleRelease --no-daemon --stacktrace
-        - store_artifacts:
-              path: app/build/outputs/apk/
-              destination: apks/
+#              path: app/build/outputs/apk/
+#              destination: apks/
 
 #  test:
 #    docker:
