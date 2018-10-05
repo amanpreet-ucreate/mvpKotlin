@@ -91,7 +91,6 @@ jobs:
         - *export_fastlane_alpha
 #        - *export_android_key
 #        - *decode_android_key
-
 #        - run:
 #               name: Initial build
 #               command: ./gradlew clean assembleRelease --no-daemon --stacktrace
