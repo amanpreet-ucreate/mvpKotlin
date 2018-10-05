@@ -1,2 +1,2 @@
-json_key_file("/Users/sys_49/Desktop/AndroidProjects/mvpKotlin/mvpkotlin_googleservices.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+json_key_file("mvpkotlin_googleservices.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 package_name("com.aman.user.mvpkotlin") # e.g. com.krausefx.app
