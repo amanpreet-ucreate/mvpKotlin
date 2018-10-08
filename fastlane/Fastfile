@@ -31,7 +31,7 @@ platform :android do
        gradle_file_path: "app/build.gradle",
 
     )
-    UI.message("Version Code: "+ new_version_code)
+    UI.message("Version Code: '#{new_version_code}'?")
     commit_android_version_bump(gradle_file_folder: "mvpKotlin/app/")
     gradle(task: 'clean')
     gradle(task: 'assemble', build_type: 'Release')
