@@ -19,12 +19,16 @@ platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(task: "lint test")
+    increment_version_code(
+              gradle_file_path: "app/build.gradle",
+
+    )
   end
 
   desc "Submit a new Alpha Build to play Store"
   lane :alpha do
     gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'alpha')
+#    upload_to_play_store(track: 'alpha')
 #    slack(message: 'Successfully distributed a new beta build')
   end
 
