@@ -29,7 +29,7 @@ platform :android do
   desc "Submit a new Alpha Build to play Store"
   lane :alpha do
     new_version_code = increment_version_code(
-       gradle_file_path: "app/build.gradle",
+       app_project_dir: "app",
 
     )
     UI.message("Version Code: '#{new_version_code}'")
