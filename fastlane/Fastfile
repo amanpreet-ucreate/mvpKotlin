@@ -33,10 +33,17 @@ platform :android do
 
     )
     UI.message("Version Code: '#{new_version_code}'")
-    commit_android_version_bump(gradle_file_folder: "app", force: true)
+#
+    android_set_version_code(versionCode: new_version_code)
+    commit_android_version_bump(gradle_file_folder: "app")
+    git_commit(
+                path: File.dirname(ENV["GRADLE_PATH"])
+                message: "MVPKOTLIN deployment version #"
+            )
+    push_to_git_remote
     gradle(task: 'clean')
     gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'alpha')
+#    upload_to_play_store(track: 'alpha')
 #    slack(message: 'Successfully distributed a new beta build')
   end
 
