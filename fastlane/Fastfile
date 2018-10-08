@@ -27,12 +27,13 @@ platform :android do
 
   desc "Submit a new Alpha Build to play Store"
   lane :alpha do
-    gradle(task: 'assemble', build_type: 'Release')
-    increment_version_code(
-                  gradle_file_path: "app/build.gradle",
+    new_version_code = increment_version_code(
+       gradle_file_path: "app/build.gradle",
 
     )
-    upload_to_play_store(track: 'alpha')
+    desc "Version CODE: ${new_version_code}"
+    gradle(task: 'assemble', build_type: 'Release')
+#    upload_to_play_store(track: 'alpha')
 #    slack(message: 'Successfully distributed a new beta build')
   end
 
