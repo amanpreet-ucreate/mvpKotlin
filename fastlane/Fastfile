@@ -32,7 +32,7 @@ platform :android do
 
     )
     UI.message("Version Code: '#{new_version_code}'")
-    commit_android_version_bump(gradle_file_folder: "app/")
+    commit_android_version_bump(gradle_file_folder: "app", force: true)
     gradle(task: 'clean')
     gradle(task: 'assemble', build_type: 'Release')
     upload_to_play_store(track: 'alpha')
