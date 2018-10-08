@@ -31,9 +31,10 @@ platform :android do
        gradle_file_path: "app/build.gradle",
 
     )
-    desc "Version CODE: ${new_version_code}"
+    UI.message("Version Code: $(new_version_code)")
+    commit_android_version_bump(gradle_file_folder: "app")
     gradle(task: 'assemble', build_type: 'Release')
-#    upload_to_play_store(track: 'alpha')
+    upload_to_play_store(track: 'alpha')
 #    slack(message: 'Successfully distributed a new beta build')
   end
 
