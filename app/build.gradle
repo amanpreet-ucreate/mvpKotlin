@@ -6,6 +6,22 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
+
+  /*  def Properties versionProps = new Properties()
+    def versionPropsFile = file('version.properties')
+
+    //Creates the version file if it doesn't exist
+    if(versionPropsFile.exists())
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+    def code = (versionProps['VERSION_CODE']).toInteger()
+    def isRelease = versionProps['IS_RELEASE'].toString() == "true"
+
+    if (isRelease) {
+        versionProps['VERSION_CODE'] = (code + 1).toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }*/
+
     defaultConfig {
         applicationId "com.aman.user.mvpkotlin"
         minSdkVersion rootProject.minSdkVersion

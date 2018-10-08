@@ -46,7 +46,7 @@ references:
     export_fastlane_alpha: &export_fastlane_alpha
       run:
           name: fastlane
-          command: bundler exec fastlane alpha
+          command: bundler exec fastlane test
  #---------------------------------------------------------------------------------------------------
           #        - *save_cache
           #        - run:
