@@ -33,7 +33,6 @@ platform :android do
 #   commit_android_version_bump(gradle_file_folder: "app")
     commit_android_version_bump(
     gradle_file_folder: "app"
-    message: "Version bump " + versioncode,
     force: true
     )
 
