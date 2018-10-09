@@ -7,6 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.compileSdkVersion
 
+/*
     def Properties versionProps = new Properties()
     def versionPropsFile = file('version.properties')
 
@@ -21,13 +22,14 @@ android {
         versionProps['VERSION_CODE'] = (code + 1).toString()
         versionProps.store(versionPropsFile.newWriter(), null)
     }
+*/
 
     defaultConfig {
         applicationId "com.aman.user.mvpkotlin"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode code
-        versionName "1.0."+code
+        versionCode 2
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {

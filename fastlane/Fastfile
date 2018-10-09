@@ -40,7 +40,7 @@ platform :android do
     UI.message("Version Code: '#{versionCode}'")
     f = File.new("app/version.properties", "w")
     f.write(versionCode)
-    f.versionCode
+    f.close
 #    commit_android_version_bump(gradle_file_folder: "app")
 
 
