@@ -32,7 +32,7 @@ platform :android do
    UI.message("Version Code: '#{versioncode}'")
 #   commit_android_version_bump(gradle_file_folder: "app")
     commit_android_version_bump(
-    gradle_file_folder: "app"
+    gradle_file_folder: "app",
     force: true
     )
 
