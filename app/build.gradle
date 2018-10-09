@@ -20,6 +20,7 @@ android {
     if (isRelease) {
         versionProps['VERSION_CODE'] = (code + 1).toString()
         versionProps.store(versionPropsFile.newWriter(), null)
+        code = (versionProps['VERSION_CODE']).toInteger()
     }
 
     defaultConfig {
