@@ -30,9 +30,7 @@ platform :android do
 
    versioncode= android_set_version_code()
    UI.message("Version Code: '#{versioncode}'")
-   commit_android_version_bump(gradle_file_folder: "app", force:true)
 
-    push_to_git_remote
     gradle(task: 'clean')
     gradle(task: 'assemble', build_type: 'Release',properties: { 'versionCode' => versioncode })
     upload_to_play_store(track: 'alpha')
