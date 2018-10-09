@@ -34,9 +34,10 @@ platform :android do
 #    )
 #    UI.message("Version Code: '#{new_version_code}'")
 #
-    android_set_version_code()
-    versionCode = android_get_versio
-   n_code()
+   versioncode= android_set_version_code()
+        UI.message("Version Code: '#{versioncode}'")
+    versionCode = android_get_version_code()
+    UI.message("Version Code: '#{versionCode}'")
     f = File.new("app/version.properties", "w")
     f.write(versionCode)
     f.versionCode
