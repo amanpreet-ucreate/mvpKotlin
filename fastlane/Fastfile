@@ -25,20 +25,12 @@ platform :android do
     )
   end
 
-
   desc "Submit a new Alpha Build to play Store"
   lane :alpha do
-#    new_version_code = increment_version_code(
-#       gradle_file_path: "app/build.gradle",
 
-#    )
-#    UI.message("Version Code: '#{new_version_code}'")
-#
    versioncode= android_set_version_code()
    UI.message("Version Code: '#{versioncode}'")
-
-#    commit_android_version_bump(gradle_file_folder: "app")
-
+   commit_android_version_bump(gradle_file_folder: "app")
 
     gradle(task: 'clean')
     gradle(task: 'assemble', build_type: 'Release',properties: { 'versionCode' => versioncode })
