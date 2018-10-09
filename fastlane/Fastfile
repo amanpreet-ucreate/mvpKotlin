@@ -35,18 +35,14 @@ platform :android do
 #    UI.message("Version Code: '#{new_version_code}'")
 #
    versioncode= android_set_version_code()
-        UI.message("Version Code: '#{versioncode}'")
-    versionCode = android_get_version_code()
-    UI.message("Version Code: '#{versionCode}'")
-    f = File.new("app/version.properties", "w")
-    f.write(versionCode)
-    f.close
+   UI.message("Version Code: '#{versioncode}'")
+
 #    commit_android_version_bump(gradle_file_folder: "app")
 
 
     gradle(task: 'clean')
-    gradle(task: 'assemble', build_type: 'Release',properties: { 'versionCode' => versionCode })
-#    upload_to_play_store(track: 'alpha')
+    gradle(task: 'assemble', build_type: 'Release',properties: { 'versionCode' => versioncode })
+    upload_to_play_store(track: 'alpha')
 #    slack(message: 'Successfully distributed a new beta build')
   end
 
