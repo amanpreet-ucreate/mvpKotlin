@@ -28,11 +28,11 @@ platform :android do
   desc "Submit a new Alpha Build to play Store"
   lane :alpha do
 
-   versioncode= android_set_version_code()
-   UI.message("Version Code: '#{versioncode}'")
+#   versioncode= android_set_version_code()
+#   UI.message("Version Code: '#{versioncode}'")
 
     gradle(task: 'clean')
-    gradle(task: 'assemble', build_type: 'Release',properties: { 'versionCode' => versioncode })
+    gradle(task: 'assemble', build_type: 'Release')
     upload_to_play_store(track: 'alpha')
 #    slack(message: 'Successfully distributed a new beta build')
   end
